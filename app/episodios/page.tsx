@@ -3,39 +3,39 @@
 import '../globals.css';
 import { useEffect, useState } from 'react';
 
-interface Ubicaciones {
+interface Episodios {
   id: number;
   name: string;
-  type: string;
-  dimension: string;
-  residents: string[]; 
+  air_date: string;
+  episode: string;
+  characters: string[];
 }
 
-export default function Pagina_ubicaciones() {
-  const [ubicaciones, setUbicaciones] = useState<Ubicaciones[]>([]);
+export default function PaginaEpisodios() {
+  const [episodios, setEpisodios] = useState<Episodios[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const consultar_Ubicaciones = async () => {
+    const consultar_episodios = async () => {
       setLoading(true);
       setError('');
       try {
-        const res = await fetch(`https://rickandmortyapi.com/api/location?page=${page}`);
+        const res = await fetch(`https://rickandmortyapi.com/api/episode?page=${page}`);
         const data = await res.json();
 
-        const ubicacionesConResidentes = await Promise.all(
-          data.results.map(async (ubicacion: any) => {
-            const residentUrls = ubicacion.residents.slice(0, 5); // solo primeros 5
-            const residentIds = residentUrls.map((url: string) => url.split('/').pop());
+        const personajesEpisodio = await Promise.all(
+          data.results.map(async (episodio: any) => {
+            const characterstUrls = episodio.characters.slice(0, 5); // solo primeros 5
+            const charactersIds = characterstUrls.map((url: string) => url.split('/').pop());
 
             let nombres: string[] = [];
 
-            if (residentIds.length > 0) {
+            if (charactersIds.length > 0) {
               const resPersonajes = await fetch(
-                `https://rickandmortyapi.com/api/character/${residentIds.join(',')}`
+                `https://rickandmortyapi.com/api/character/${charactersIds.join(',')}`
               );
               const personajes = await resPersonajes.json();
 
@@ -47,25 +47,25 @@ export default function Pagina_ubicaciones() {
             }
 
             return {
-              id: ubicacion.id,
-              name: ubicacion.name,
-              type: ubicacion.type,
-              dimension: ubicacion.dimension,
-              residents: nombres,
+              id: episodio.id,
+              name: episodio.name,
+              air_date: episodio.air_date,
+              episode: episodio.episode,
+              characters: nombres,
             };
           })
         );
 
-        setUbicaciones(ubicacionesConResidentes);
+        setEpisodios(personajesEpisodio);
         setTotalPages(data.info.pages);
       } catch (err) {
-        setError('No pude cargar las ubicaciones.');
+        setError('No pude cargar los episodios.');
       } finally {
         setLoading(false);
       }
     };
 
-    consultar_Ubicaciones();
+    consultar_episodios();
   }, [page]);
 
 
@@ -74,7 +74,7 @@ export default function Pagina_ubicaciones() {
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-400 mx-auto mb-4"></div>
-          <p className="text-lg text-gray-300">Cargando ubicaciones...</p>
+          <p className="text-lg text-gray-300">Cargando episodios...</p>
         </div>
       </div>
     );
@@ -86,7 +86,7 @@ export default function Pagina_ubicaciones() {
     <div className="p-6">
 
         <div className = "border-[0px] border-[none] rounded-xl shadow-md p-4 bg-white dark:bg-zinc-900">
-                      <h1 className="text-3xl font-bold mb-6 text-center">UBICACIONES</h1>
+                      <h1 className="text-3xl font-bold mb-6 text-center">EPISODIOS</h1>
         </div>
 
 
@@ -115,23 +115,23 @@ export default function Pagina_ubicaciones() {
       ) : error ? (
         <p className="text-red-500 text-center">{error}</p>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-8 text-center ">
-          {ubicaciones.map((ubic) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center ">
+          {episodios.map((eps) => (
             <div
-              key={ubic.id}
+              key={eps.id}
               className="bg-white shadow-md rounded-xl p-4 border border-gray-200"
             >
-              <h2 className="text-xl text-black font-semibold">Nombre Ubicación : {ubic.name}</h2>
-              <p className="text-sm text-black">Tipo: {ubic.type}</p>
-              <p className="text-sm text-black mb-2">Dimensión: {ubic.dimension}</p>
+              <h2 className="text-xl text-black font-semibold">Nombre Episodio : {eps.name}</h2>
+              <p className="text-sm text-black">Fecha de Emisión : {eps.air_date}</p>
+              <p className="text-sm text-black mb-2">Numero Episodio: {eps.episode}</p>
 
-              <p className="font-medium text-black">Residentes: (max 5). </p>
-              {ubic.residents.length === 0 ? (
-                <p className="text-sm text-black">No hay residentes</p>
+              <p className="font-medium text-black">Personajes: (max 5). </p>
+              {eps.characters.length === 0 ? (
+                <p className="text-sm text-black">No hay personajes</p>
               ) : (
                 <ul className="list-disc list-inside text-sm text-gray-700">
-                  {ubic.residents.map((residente, idx) => (
-                    <li key={idx}>{residente}</li>
+                  {eps.characters.map((character, idx) => (
+                    <li key={idx}>{character}</li>
                   ))}
                 </ul>
               )}
