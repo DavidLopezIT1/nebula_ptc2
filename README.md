@@ -1,39 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rick and Morty - SPA (Next.js + React)
 
-## Getting Started
+Aplicación web desarrollada con **ReactJS y Next.js** que consume la [API pública de Rick and Morty](https://rickandmortyapi.com/), permitiendo explorar personajes, ubicaciones y sus relaciones. Es una Single Page Application (SPA) totalmente responsive, diseñada con **TailwindCSS**
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tecnologías
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Next.js 14 (App Router)](https://nextjs.org/)
+- [React 18](https://reactjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- Fetch API (nativo)
+- HTML semántico y buenas prácticas accesibles
+- Estilo limpio y organizado con componentes reutilizables (Headers)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Estructura del Proyecto
 
-## Learn More
+/app
+├── layout.tsx # Layout global de la app
+├── globals.css # Estilos base con Tailwind
+├── page.tsx # Página de inicio (puedes personalizarla)
+├── personajes/ # Vista principal y detalle de personajes
+│ ├── page.tsx # Listado de personajes con paginación
+│ └── [id]/page.tsx # Página de detalle individual
+└── ubicaciones/
+└── page.tsx # Página que muestra ubicaciones + residentes
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Instalación y uso en ambiente de desarrollo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Se debe clonar este repositorio**
+# bash :
+    git clone https://github.com/TU_USUARIO/rick-and-morty-app.git
+    cd rick-and-morty/
 
-## Deploy on Vercel
+2. **Instalar dependencias**
+# bash :
+    npm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Luego se debe levantar el servidor de desarrollo
+# bash :
+    npm run dev
+# NOTA: En esta aplicación NO se necesita despliegue para visualizar, la desplegué en una maquina EC2 de AWS, la pueden consultar en el siguiente link:
+   -----> http://3.140.2.26:3000/ <-----
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 
-Primer README.MD en el proceso de transformación de scripts con next.js
+--- Cómo usar la aplicación ---
+
+# Página de Personajes /personajes
+Se muestra una lista paginada de personajes.
+
+   -----> http://3.140.2.26:3000/personajes <-----
+
+Al hacer clic sobre el nombre de cualquiera, se navega a su detalle (/personajes/[id]).
+
+# Cada personaje incluye:
+  
+    Imagen
+    Nombre
+    Estado
+    Especie
+    Origen
+    Ubicación actual
+    Episodios
+
+# Página de Ubicaciones /ubicaciones
+Lista las ubicaciones disponibles con:
+
+Nombre, tipo y dimensión
+
+Primeros 5 residentes (nombres)
+
+Botones para navegar entre páginas.
+
+  -----> http://3.140.2.26:3000/ubicaciones <-----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

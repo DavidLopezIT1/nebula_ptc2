@@ -68,6 +68,20 @@ export default function Pagina_ubicaciones() {
     consultar_Ubicaciones();
   }, [page]);
 
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-400 mx-auto mb-4"></div>
+          <p className="text-lg text-gray-300">Cargando ubicaciones...</p>
+        </div>
+      </div>
+    );
+  }
+
+
+
   return (
     <div className="p-6">
 
@@ -101,13 +115,13 @@ export default function Pagina_ubicaciones() {
       ) : error ? (
         <p className="text-red-500 text-center">{error}</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-3 md:grid-cols-3 gap-8 text-center ">
           {ubicaciones.map((ubic) => (
             <div
               key={ubic.id}
               className="bg-white shadow-md rounded-xl p-4 border border-gray-200"
             >
-              <h2 className="text-xl text-black font-semibold">{ubic.name}</h2>
+              <h2 className="text-xl text-black font-semibold">Nombre Ubicación : {ubic.name}</h2>
               <p className="text-sm text-black">Tipo: {ubic.type}</p>
               <p className="text-sm text-black mb-2">Dimensión: {ubic.dimension}</p>
 

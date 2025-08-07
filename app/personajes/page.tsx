@@ -43,7 +43,16 @@ export default function Pagina_personajs() {
   }, [page]);
 
 
-
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-400 mx-auto mb-4"></div>
+          <p className="text-lg text-gray-300">Cargando personajes...</p>
+        </div>
+      </div>
+    );
+  }
 
 
 
@@ -76,8 +85,9 @@ export default function Pagina_personajs() {
 
       {loading && <p className="text-center">Cargando...</p>}
       {error && <p className="text-center text-red-500">{error}</p>}
+   
 
-      <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-10">
+    <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-10">
         {characters.map((char) => (
           <div key={char.id} className="hover:scale-105 hover:shadow-lg transition duration-300 ease-in-out bg-white rounded shadow p-2 text-center">
             <img src={char.image} alt={char.name} className="mx-auto rounded" />
