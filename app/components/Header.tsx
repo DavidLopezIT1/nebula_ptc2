@@ -1,9 +1,11 @@
 'use client';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import React from "react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <nav className="bg-white border-[1px] border-[#88e23b] dark:bg-gray-900">
@@ -11,7 +13,7 @@ export default function Header() {
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="/rick_logo.jpg" className="h-8" alt="Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Personajes
+            RICK & MORTY
           </span>
         </a>
         <button
@@ -42,22 +44,54 @@ export default function Header() {
         <div className={`${isOpen ? 'block' : 'hidden'} w-full md:block md:w-auto`} id="navbar-default">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
-              <a href="/" className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500">
+              <a
+                href="/"
+                className={`block py-2 px-3 rounded-sm md:p-0 ${
+                  pathname === '/'
+                    ? 'text-blue-500'
+                    : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent dark:text-white md:dark:hover:text-blue-500'
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
                 Inicio
               </a>
             </li>
             <li>
-              <a href="/personajes" onClick={() => setIsOpen(false)} className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:p-0 dark:text-white md:dark:hover:text-blue-500">
+              <a
+                href="/personajes"
+                className={`block py-2 px-3 rounded-sm md:p-0 ${
+                  pathname.startsWith('/personajes')
+                    ? 'text-blue-500'
+                    : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent dark:text-white md:dark:hover:text-blue-500'
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
                 Personajes
               </a>
             </li>
             <li>
-              <a href="/ubicaciones" onClick={() => setIsOpen(false)} className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:p-0 dark:text-white md:dark:hover:text-blue-500">
+              <a
+                href="/ubicaciones"
+                className={`block py-2 px-3 rounded-sm md:p-0 ${
+                  pathname.startsWith('/ubicaciones')
+                    ? 'text-blue-500'
+                    : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent dark:text-white md:dark:hover:text-blue-500'
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
                 Ubicaciones
               </a>
             </li>
             <li>
-              <a href="/episodios" onClick={() => setIsOpen(false)} className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:p-0 dark:text-white md:dark:hover:text-blue-500">
+              <a
+                href="/episodios"
+                className={`block py-2 px-3 rounded-sm md:p-0 ${
+                  pathname.startsWith('/episodios')
+                    ? 'text-blue-500'
+                    : 'text-gray-900 hover:bg-gray-100 md:hover:bg-transparent dark:text-white md:dark:hover:text-blue-500'
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
                 Episodios
               </a>
             </li>
