@@ -4,6 +4,20 @@ Todas las versiones se documentan bajo el formato [Keep a Changelog](https://kee
 
 ---
 
+## [1.0.0] - 2025-08-07
+### Añadido
+
+- Integración completa con la API oficial: episodios
+- Filtrado de favoritos para todos los módulos.
+- Sistema de paginación funcional con botones `Anterior` y `Siguiente`.
+- Vista tipo galería con tarjetas visuales para información de episodios.
+- Tematización visual oscura basada en TailwindCSS.
+- Composición modular de componentes: header, navegación, grillas y controles.
+- Despliegue listo para producción estática (`http://3.140.2.26:3000/episodios`).
+- Finalización de la documentación formal del proyecto
+
+---
+
 ## [1.0.0] - 2025-08-06
 ### Añadido
 

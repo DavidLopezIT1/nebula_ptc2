@@ -193,7 +193,7 @@ export default function PaginaPersonajes() {
             
             <img src={personaje.image} alt={personaje.name} className="mx-auto rounded" />
             <h2 className="text-black font-semibold mt-2">
-              Nombre : <Link href={`/personajes/${personaje.id}`}>{personaje.name}</Link>
+              Nombre : <Link href={`/personajes/${personaje.id}`} className="underline text-blue-700 " >{personaje.name}</Link>
             </h2>
             <p className="text-black">Estado : {personaje.status}</p>
             <p className="text-black">Especie : {personaje.species}</p>

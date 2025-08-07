@@ -44,11 +44,22 @@ Aplicación web desarrollada con **ReactJS y Next.js** que consume la [API públ
 # bash :
     npm run dev
 # NOTA: En esta aplicación NO se necesita despliegue para visualizar, la desplegué en una maquina EC2 de AWS, la pueden consultar en el siguiente link:
-   -----> http://3.140.2.26:3000/ <-----
+  
+	 -----> http://3.140.2.26:3000/ <-----
 
 
 
 --- Cómo usar la aplicación ---
+
+# Página de inicio
+
+Se muestra una´página de inicio en donde se podrá visualizar la interfáz de bienvenida, luego de esto, 
+podrá usar los menú de la GUI para interacturar con los diferentes módulos (personajes, ubicaciones, episodios)
+
+Puede navegar con los controles del header o con los controles de la GUI
+
+   -----> http://3.140.2.26:3000/ <-----
+
 
 # Página de Personajes /personajes
 Se muestra una lista paginada de personajes.
@@ -67,6 +78,10 @@ Al hacer clic sobre el nombre de cualquiera, se navega a su detalle (/personajes
     Ubicación actual
     Episodios
 
+Al hacer click en el corazón que queda en la parte superior derecha de cada tarjeta, se puede añadir a favoritos
+
+    Para ver los favoritos solo debe seleccionar el botón llamado favoritos y podrá ver filtrado su selección.
+
 # Página de Ubicaciones /ubicaciones
 Lista las ubicaciones disponibles con:
 
@@ -79,9 +94,27 @@ Botones para navegar entre páginas.
   -----> http://3.140.2.26:3000/ubicaciones <-----
 
 
+Al hacer click en el corazón que queda en la parte superior derecha de cada tarjeta, se puede añadir a favoritos
+
+    Para ver los favoritos solo debe seleccionar el botón llamado favoritos y podrá ver filtrado su selección.
 
 
 
+# Página de Episodios /episodios
+Lista las ubicaciones disponibles con:
+
+Nombre del episodio, Fecha de Emisión, Numero Episodio.
+
+Primeros 5 personajes de cada episodio (nombres)
+
+Botones para navegar entre páginas.
+
+  -----> http://3.140.2.26:3000/episodios <-----
+
+
+Al hacer click en el corazón que queda en la parte superior derecha de cada tarjeta, se puede añadir a favoritos
+
+    Para ver los favoritos solo debe seleccionar el botón llamado favoritos y podrá ver filtrado su selección.
 
 
 
