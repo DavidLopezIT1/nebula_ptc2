@@ -43,7 +43,7 @@ Aplicación web desarrollada con **ReactJS y Next.js** que consume la [API públ
 3. Luego se debe levantar el servidor de desarrollo
 # bash :
     npm run dev
-# NOTA: En esta aplicación NO se necesita despliegue para visualizar, la desplegué en una maquina EC2 de AWS, la pueden consultar en el siguiente link:
+# NOTA: En esta aplicación NO se necesita despliegue para visualizar, la desplegué en una maquina EC2 de AWS, la pueden consultar a partir del Viernes 8 de Agosto sobre las 8:00 am - en el siguiente link:
   
 	 -----> http://3.140.2.26:3000/ <-----
 
