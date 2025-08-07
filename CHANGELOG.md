@@ -48,15 +48,4 @@ Todas las versiones se documentan bajo el formato [Keep a Changelog](https://kee
 - Despliegue listo para producción estática (`http://3.140.2.26:3000/personajes`) y (`http://3.140.2.26:3000/personajes/2`).
 
 
-## 🔮 Próximamente
-
-- Integración completa con la API oficial: Episodios
-- Sistema de paginación funcional con botones `Anterior` y `Siguiente`.
-- Vista tipo galería con tarjetas visuales para Episodios.
-- Tematización visual oscura basada en TailwindCSS.
-- Composición modular de componentes: header, navegación, grillas y controles.
-- Despliegue listo para producción estática (`http://3.140.2.26:3000/episodios`).
-- Transiciones animadas con Framer Motion.
-- permitir seleccionar personajes, ubicaciones y episodios como favoritos
-
 ---
